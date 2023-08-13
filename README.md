@@ -1,3 +1,36 @@
+# 1. Create a new project named react-app
+`npx create-react-app react-app //Same as running below 2 command`
+    npm -g install create-react-app //install cli globally
+    create-react-app react-app //ceate application by the tool
+**Note: command `npx create-react-app react-app-ts --template typescript` can create a TS app.**
+# 2. How the project compiled
+1. Run eject to get all the configurations
+2. Find below code in the file `webpack.config.js`
+    // Check if TypeScript is setup
+    const useTypeScript = fs.existsSync(paths.appTsConfig);
+3. appTsConfig is exported in the file `paths.js`
+module.exports = {
+  appTsConfig: resolveApp('tsconfig.json'), // tsconfig.json is the config file for TS
+4. In the file `webpack.config.js`, set babel-loader
+// Process application JS with Babel.
+// The preset includes JSX, Flow, TypeScript, and some ESnext features.
+{
+    test: /\.(js|mjs|jsx|ts|tsx)$/,
+    include: paths.appSrc,
+    loader: require.resolve('babel-loader'),
+# 3. Change App from js to ts
+1. Run command `npm install --save typescript @types/node @types/react @types/react-dom @types/jest`
+**Note: @types/react: The interface definition for ts (also called typing). Ts is not supported by React, so explain files are needed.**
+2. Change .js file to .ts or .tsx
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
